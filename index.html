@@ -47,9 +47,28 @@
 		<script type="text/javascript" src="js/libs/modernizr.min.js"></script>
 
 
+		<meta name="prismic-api" content="https://frontendonly.prismic.io/api">
+		<meta name="prismic-oauth-client-id" content="UzJVxQEAANoLZ3N0">
+
+		<!-- ==============================================
+		Scripts added to work with prismic.io and prismic.io singlepage
+		=============================================== -->
+		<script src="js/ejs-1.0.js"></script>
+		<script src="js/prismic.io-1.0.9.js"></script>
+		<script src="js/prismic.io-singlepage-1.0.0.js"></script>
+
+
 	</head>
 
 	<body data-spy="scroll" data-target="#main-nav" data-offset="400">
+
+		<script type="text/prismic-query" data-binding="copys">
+      [
+        [:d = at(document.type, "copy")]
+      ]
+    </script>
+		[% var copy = copys[0] %]
+
 		<!-- ==============================================
 		MAIN NAV
 		=============================================== -->
@@ -67,7 +86,7 @@
 						<span class="logo-small"><img src="assets/logo-small.png" alt=""/></span>
 						<span class="to-top"><i class="fa fa-arrow-up"></i></span>
 
-						Qubico
+						[%= copy.getText('copy.company_name') %]
 
 						<!-- ==== Image Logo ==== -->
 						<!--<img class="site-logo" src="assets/logo.png" alt="logo" />-->
@@ -81,19 +100,19 @@
 							<a href="#home" class="scrollto">Home</a>
 						</li>
 						<li>
-							<a href="#about" class="scrollto">About</a>
+							<a href="#about" class="scrollto">[%= copy.getText('copy.about_nav_label') %]</a>
 						</li>
 						<li>
-							<a href="#services" class="scrollto">Services</a>
+							<a href="#services" class="scrollto">[%= copy.getText('copy.services_nav_label') %]</a>
 						</li>
 						<li>
-							<a href="#team" class="scrollto">Team</a>
+							<a href="#team" class="scrollto">[%= copy.getText('copy.team_nav_label') %]</a>
 						</li>
 						<li>
-							<a href="#portfolio" class="scrollto">Portfolio</a>
+							<a href="#portfolio" class="scrollto">[%= copy.getText('copy.portfolio_nav_label') %]</a>
 						</li>
 						<li>
-							<a href="#contact" class="scrollto">Contact</a>
+							<a href="#contact" class="scrollto">[%= copy.getText('copy.contact_nav_label') %]</a>
 						</li>
 					</ul>
 				</div><!--End navbar-collapse -->
@@ -180,8 +199,8 @@
 
 			<div class="container">
 
-				<h1 class="section-title">Our Services</h1>
-				<p class="section-description">We create awesome Websites and Mobile Apps, the perfect solution for your project.<br/> We don't make designs, we make magic!</p>
+				<h1 class="section-title">[%= copy.getText('copy.services_title') %]</h1>
+				<p class="section-description">[%= copy.getText('copy.services_lede') %]</p>
 
 				<div class="row services">
 
@@ -220,8 +239,8 @@
 				</div>
 
 
-				<h1 class="subsection-title">Our Process</h1>
-				<p class="subsection-description">You are a serious company. You deserve a serious sollution.<br/>We'll be there from the beginning to the very end of your project's development.</p>
+				<h1 class="subsection-title">[%= copy.getText('copy.process_title') %]</h1>
+				<p class="subsection-description">[%= copy.getText('copy.process_lede') %]</p>
 
 				<div class="process-box scrollimation">
 
@@ -263,8 +282,8 @@
 
 			<div class="container">
 
-				<h1 class="section-title">Meet the Team</h1>
-				<p class="section-description">We are a small team with great skills. See the faces behind the lines of code. </p>
+				<h1 class="section-title">[%= copy.getText('copy.team_title') %]</h1>
+				<p class="section-description">[%= copy.getText('copy.team_lede') %]</p>
 
 				<div class="row team-member">
 
@@ -352,8 +371,8 @@
 
 			<div class="container">
 
-				<h1 class="section-title">Our Portfolio</h1>
-				<p class="section-description">We are proud of what we do. This is just an example of our greatest projects.</p>
+				<h1 class="section-title">[%= copy.getText('copy.portfolio_title') %]</h1>
+				<p class="section-description">[%= copy.getText('copy.portfolio_lede') %]</p>
 
 				<!--==== Portfolio Filters ====-->
 
@@ -580,8 +599,8 @@
 
 			<div class="container">
 
-				<h1 class="section-title">Our Clients</h1>
-				<p class="section-description">We 've worked with many serious brands in the industry.</p>
+				<h1 class="section-title">[%= copy.getText('copy.clients_title') %]</h1>
+				<p class="section-description">[%= copy.getText('copy.clients_lede') %]</p>
 
 				<div class="row clients">
 
@@ -663,8 +682,8 @@
 
 			<div class="container">
 
-				<h1 class="section-title">Keep in Touch</h1>
-				<p class="section-description">Are you ready to start your project? Give us call or drop us a line.</p>
+				<h1 class="section-title">[%= copy.getText('copy.contact_title') %]</h1>
+				<p class="section-description">[%= copy.getText('copy.contact_lede') %]</p>
 
 				<div class="row">
 
@@ -705,11 +724,21 @@
 
 			<div class="container text-center">
 				<ul class="social-links">
-					<li><a href="#link"><i class="fa fa-twitter fa-fw"></i></a></li>
-					<li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
-					<li><a href="#link"><i class="fa fa-google-plus fa-fw"></i></a></li>
-					<li><a href="#link"><i class="fa fa-dribbble fa-fw"></i></a></li>
-					<li><a href="#link"><i class="fa fa-linkedin fa-fw"></i></a></li>
+					[% if (copy.get('copy.twitter')) { %]
+						<li><a href="[%= copy.get('copy.twitter').url() %]" target="_blank"><i class="fa fa-twitter fa-fw"></i></a></li>
+					[% } %]
+					[% if (copy.get('copy.facebook')) { %]
+						<li><a href="[%= copy.get('copy.facebook').url() %]" target="_blank"><i class="fa fa-facebook fa-fw"></i></a></li>
+					[% } %]
+					[% if (copy.get('copy.googleplus')) { %]
+						<li><a href="[%= copy.get('copy.googleplus').url() %]" target="_blank"><i class="fa fa-google-plus fa-fw"></i></a></li>
+					[% } %]
+					[% if (copy.get('copy.dribbble')) { %]
+						<li><a href="[%= copy.get('copy.dribbble').url() %]" target="_blank"><i class="fa fa-dribbble fa-fw"></i></a></li>
+					[% } %]
+					[% if (copy.get('copy.linkedin')) { %]
+						<li><a href="[%= copy.get('copy.linkedin').url() %]" target="_blank"><i class="fa fa-linkedin fa-fw"></i></a></li>
+					[% } %]
 				</ul>
 				<p>&copy;2014 Qubico Theme by <a href="https://wrapbootstrap.com/user/qthemes" target="_blank">Qthemes</a></p>
 				<em>Text and imagery in this website are for demo purposes only and have nothing to do with Qthemes.</em>
