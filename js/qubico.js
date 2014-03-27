@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('prismic:rendered', function() {
 	
 	/*============================================
 	Sequence Slider
