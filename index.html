@@ -204,37 +204,21 @@
 
 				<div class="row services">
 
-					<div class="col-sm-3 item text-center scrollimation fade-right d2">
+					<script type="text/prismic-query" data-binding="services">
+						[
+							[:d = at(document.type, "service")]
+						]
+					</script>
 
-						<div class="icon"><i class="fa fa-flag"></i></div>
-						<h3>Branding</h3>
-						<p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
+					[% services.forEach(function(service){ %]
+						<div class="col-sm-3 item text-center scrollimation fade-right">
 
-					</div>
+							<div class="icon"><i class="fa fa-[%= service.getText('service.icon_code') %]"></i></div>
+							<h3>[%= service.getText('service.name') %]</h3>
+							[%= service.getStructuredText('service.catcher').asHtml() %]
 
-					<div class="col-sm-3 item text-center scrollimation fade-right">
-
-						<div class="icon"><i class="fa fa-pencil"></i></div>
-						<h3>Design</h3>
-						<p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
-
-					</div>
-
-					<div class="col-sm-3 item text-center scrollimation fade-left">
-
-						<div class="icon"><i class="fa fa-code"></i></div>
-						<h3>Development</h3>
-						<p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
-
-					</div>
-
-					<div class="col-sm-3 item text-center scrollimation fade-left d2">
-
-						<div class="icon"><i class="fa fa-rocket"></i></div>
-						<h3>Rocket Science</h3>
-						<p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
-
-					</div>
+						</div>
+					[% }) %]
 
 				</div>
 
