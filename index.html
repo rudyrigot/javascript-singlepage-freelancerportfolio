@@ -399,72 +399,24 @@
 				<h1 class="section-title">[%= copy.getText('copy.clients_title') %]</h1>
 				<p class="section-description">[%= copy.getText('copy.clients_lede') %]</p>
 
+
+				<script type="text/prismic-query" data-binding="clients">
+					[
+						[:d = at(document.type, "client")]
+					]
+				</script>
+
 				<div class="row clients">
 
-					<div class="col-sm-6 col-md-3">
+					[% clients.forEach(function(client){ %]
+						<div class="col-sm-6 col-md-3">
 
-						<div class="client scrollimation fade-up">
-							<a href="#link" target="_blank"><img class="img-responsive img-center" src="assets/placeholder-200x82.jpg" alt=""/></a>
+							<div class="client scrollimation fade-up">
+								<a href="[%= client.get('client.link').url() %]" target="_blank"><img class="img-responsive img-center" src="[%= client.getImageView('client.logo', 'main').url %]" alt=""/></a>
+							</div>
+
 						</div>
-
-					</div>
-
-					<div class="col-sm-6 col-md-3">
-
-						<div class="client scrollimation fade-up d1">
-							<a href="#link" target="_blank"><img class="img-responsive img-center" src="assets/placeholder-200x82.jpg" alt=""/></a>
-						</div>
-
-					</div>
-
-					<div class="col-sm-6 col-md-3">
-
-						<div class="client scrollimation fade-up d3">
-							<a href="#link" target="_blank"><img class="img-responsive img-center" src="assets/placeholder-200x82.jpg" alt=""/></a>
-						</div>
-
-					</div>
-
-					<div class="col-sm-6 col-md-3">
-
-						<div class="client scrollimation fade-up d2">
-							<a href="#link" target="_blank"><img class="img-responsive img-center" src="assets/placeholder-200x82.jpg" alt=""/></a>
-						</div>
-
-					</div>
-
-
-					<div class="col-sm-6 col-md-3">
-
-						<div class="client scrollimation fade-up d4">
-							<a href="#link" target="_blank"><img class="img-responsive img-center" src="assets/placeholder-200x82.jpg" alt=""/></a>
-						</div>
-
-					</div>
-
-					<div class="col-sm-6 col-md-3">
-
-						<div class="client scrollimation fade-up d3">
-							<a href="#link" target="_blank"><img class="img-responsive img-center" src="assets/placeholder-200x82.jpg" alt=""/></a>
-						</div>
-
-					</div>
-
-					<div class="col-sm-6 col-md-3">
-
-						<div class="client scrollimation fade-up d2">
-							<a href="#link" target="_blank"><img class="img-responsive img-center" src="assets/placeholder-200x82.jpg" alt=""/></a>
-						</div>
-
-					</div>
-
-					<div class="col-sm-6 col-md-3">
-
-						<div class="client scrollimation fade-up d1">
-							<a href="#link" target="_blank"><img class="img-responsive img-center" src="assets/placeholder-200x82.jpg" alt=""/></a>
-						</div>
-
-					</div>
+					[% });%]
 
 				</div><!-- End row -->
 
@@ -484,29 +436,21 @@
 
 				<div class="row">
 
-					<div class="col-sm-4 text-center contact-item scrollimation fade-right">
+					<script type="text/prismic-query" data-binding="contacts">
+						[
+							[:d = at(document.type, "contact")]
+						]
+					</script>
 
-						<a class="icon" href="http://goo.gl/maps/0m7WQ" target="_blank"><i class="fa fa-map-marker fa-fw"></i></a>
-						<h2>Our Location</h2>
-						<p>635 Madison Ave, NY , 10173</p>
+					[% contacts.forEach(function(contact, i){ %]
+						<div class="col-sm-4 text-center contact-item scrollimation [%= i%3==0 ? 'fade-right' : (i%3==2 ? 'fade-left' : 'fade-up' ) %]">
 
-					</div>
+							<a class="icon" href="#" target="_blank"><i class="fa fa-[%= contact.getText('contact.icon_code') %] fa-fw"></i></a>
+							<h2>[%= contact.getText('contact.title') %]</h2>
+							<p>[%= contact.getText('contact.description') %]</p>
 
-					<div class="col-sm-4 text-center contact-item scrollimation fade-up">
-
-						<a class="icon" href="mailto:mail@example.com"><i class="fa fa-envelope fa-fw"></i></a>
-						<h2>Send a mail</h2>
-						<p>mail@example.com</p>
-
-					</div>
-
-					<div class="col-sm-4 text-center contact-item scrollimation fade-left">
-
-						<a class="icon" href="#link"><i class="fa fa-phone fa-fw"></i></a>
-						<h2>Call us</h2>
-						<p>+01 234-56789</p>
-
-					</div>
+						</div>
+					[% }); %]
 
 				</div>
 
