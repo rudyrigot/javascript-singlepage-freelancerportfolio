@@ -135,55 +135,42 @@
 						<li class="sequence-next"><i class="fa fa-angle-right fa-fw"></i></li>
 					</ul>
 
+					<script type="text/prismic-query" data-binding="abouts">
+						[
+							[:d = at(document.type, "about")]
+						]
+					</script>
+
 					<ul class="sequence-canvas container">
-						<li class="animate-in">
-							<div class="message-slide1">
-								<h2 class="title in-from-left fast">Welcome to Qubico</h2>
-								<p class="in-from-bottom fast delay2">The New Bootstrap template from Qthemes</p>
-							</div>
-							<div class="slide1-img in-from-right slow delay1">
-								<img class="img-responsive" src="assets/slider/imac.png" alt="" />
-								<div class="imac-screen">
-									<img class="img-responsive" src="assets/slider/placeholder-500x300.jpg" alt="" />
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="message-slide2">
-								<h2 class="title in-from-right fast delay1">Modern &amp; Powerfull</h2>
-								<p class="in-from-bottom fast delay2">Showcase your Portfolio with Style with Qubico's Great Features</p>
-							</div>
-							<div class="slide2-img in-from-top fast">
-								<img class="img-responsive" src="assets/slider/ipad-flat.png" alt="" />
-								<div class="ipad-screen">
-									<img class="img-responsive" src="assets/slider/placeholder-300x400.jpg" alt="" />
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="message-slide3">
-								<h2 class="title in-from-left fast delay1">100% Responsive Design</h2>
-								<p class="in-from-left fast delay3">On modern browsers, old browsers (IE8+) and touch devices</p>
-							</div>
-							<div class="slide3-img1 in-from-top fast">
-								<img class="img-responsive" src="assets/slider/imac.png" alt="" />
-								<div class="imac-screen">
-									<img class="img-responsive" src="assets/slider/placeholder-500x300.jpg" alt="" />
-								</div>
-							</div>
-							<div class="slide3-img2 in-from-top fast delay1">
-								<img class="img-responsive" src="assets/slider/ipad-flat.png" alt="" />
-								<div class="ipad-screen">
-									<img class="img-responsive" src="assets/slider/placeholder-300x400.jpg" alt="" />
-								</div>
-							</div>
-							<div class="slide3-img3 in-from-top fast delay2">
-								<img class="img-responsive" src="assets/slider/iphone-flat.png" alt="" />
-								<div class="iphone-screen">
-									<img class="img-responsive" src="assets/slider/placeholder-80x140.jpg" alt="" />
-								</div>
-							</div>
-						</li>
+						[% abouts.forEach(function(about, i){ %]
+							[% if (about.getText('about.device') === 'imac') { %]
+								<li>
+									<div class="message-slide1">
+										<h2 class="title in-from-left fast">[%= about.getText('about.title') %]</h2>
+										<p class="in-from-bottom fast delay2">[%= about.getText('about.lede') %]</h2></p>
+									</div>
+									<div class="slide1-img in-from-top slow delay1">
+										<img class="img-responsive" src="assets/slider/imac.png" alt="" />
+										<div class="imac-screen">
+											[%- about.getImageView('about.img0', 'main').asHtml() %]
+										</div>
+									</div>
+								</li>
+							[% } else { %]
+								<li>
+									<div class="message-slide2">
+										<h2 class="title in-from-left fast">[%= about.getText('about.title') %]</h2>
+										<p class="in-from-bottom fast delay2">[%= about.getText('about.lede') %]</h2></p>
+									</div>
+									<div class="slide2-img in-from-top slow delay1">
+										<img class="img-responsive" src="assets/slider/ipad-flat.png" alt="" />
+										<div class="ipad-screen">
+											[%- about.getImageView('about.img0', 'main').asHtml() %]
+										</div>
+									</div>
+								</li>
+							[% } %]
+						[% }); %]
 					</ul>
 
 				</div>
@@ -215,7 +202,7 @@
 
 							<div class="icon"><i class="fa fa-[%= service.getText('service.icon_code') %]"></i></div>
 							<h3>[%= service.getText('service.name') %]</h3>
-							[%= service.getStructuredText('service.catcher').asHtml() %]
+							[%- service.getStructuredText('service.catcher').asHtml() %]
 
 						</div>
 					[% }) %]
@@ -269,80 +256,38 @@
 				<h1 class="section-title">[%= copy.getText('copy.team_title') %]</h1>
 				<p class="section-description">[%= copy.getText('copy.team_lede') %]</p>
 
-				<div class="row team-member">
+				<script type="text/prismic-query" data-binding="staffs">
+					[
+						[:d = at(document.type, "staff")]
+					]
+				</script>
 
-					<div class="col-sm-3 col-sm-offset-1 member-thumb scrollimation fade-right">
+				[% staffs.forEach(function(staff, i){ %]
+					<div class="row team-member [%- (i%2==1) ? 'right' : '' %]">
 
-						<img class="img-responsive img-center" src="assets/placeholder-360x440.jpg" alt="" />
-						<h4>John Doe</h4>
-						<p class="title">Lead Designer &amp; Founder</p>
+						<div class="col-sm-3 [%- (i%2==1) ? 'col-sm-push-8' : 'col-sm-offset-1' %] member-thumb scrollimation fade-right">
 
-					</div>
+							[%- staff.getImageView('staff.image', 'main').asHtml() %]
+							<h4>[%= staff.getText('staff.name') %]</h4>
+							<p class="title">[%= staff.getText('staff.title') %]</p>
 
-					<div class="col-sm-7 scrollimation fade-left">
+						</div>
 
-						<div class="member-details">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+						<div class="col-sm-7 [%- (i%2==1) ? 'col-sm-pull-2' : '' %] scrollimation fade-left">
 
-							<ul class="member-socials">
-								<li><a href="mailto:mail@example.com"><i class="fa fa-envelope fa-fw"></i></a></li>
-								<li><a href="#link"><i class="fa fa-twitter fa-fw"></i></a></li>
-								<li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
-								<li><a href="#link"><i class="fa fa-linkedin fa-fw"></i></a></li>
-							</ul>
+							<div class="member-details">
+								<p class="title">[%- staff.getStructuredText('staff.quote').asHtml() %]</p>
+
+								<ul class="member-socials">
+									<li><a href="mailto:[%- staff.getText('staff.mail') %]"><i class="fa fa-envelope fa-fw"></i></a></li>
+									<li><a href="[%- staff.get('staff.twitter').url() %]"><i class="fa fa-twitter fa-fw"></i></a></li>
+									<li><a href="[%- staff.get('staff.facebook').url() %]"><i class="fa fa-facebook fa-fw"></i></a></li>
+									<li><a href="[%- staff.get('staff.linkedin').url() %]"><i class="fa fa-linkedin fa-fw"></i></a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="row team-member right">
-
-					<div class="col-sm-3 col-sm-push-8 member-thumb scrollimation fade-left">
-
-						<img class="img-responsive img-center" src="assets/placeholder-360x440.jpg" alt=""/>
-						<h4>Jane Doe</h4>
-						<p class="title">Designer</p>
-
-					</div>
-
-					<div class="col-sm-7 col-sm-pull-2 scrollimation fade-right">
-
-						<div class="member-details">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-
-							<ul class="member-socials">
-								<li><a href="mailto:mail@example.com"><i class="fa fa-envelope fa-fw"></i></a></li>
-								<li><a href="#link"><i class="fa fa-twitter fa-fw"></i></a></li>
-								<li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
-								<li><a href="#link"><i class="fa fa-linkedin fa-fw"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<div class="row team-member">
-
-					<div class="col-sm-3 col-sm-offset-1 member-thumb scrollimation fade-right">
-
-						<img class="img-responsive img-center" src="assets/placeholder-360x440.jpg" alt=""/>
-						<h4>Richard Roe</h4>
-						<p class="title">Lead Developer</p>
-
-					</div>
-
-					<div class="col-sm-7 scrollimation fade-left">
-
-						<div class="member-details">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-
-							<ul class="member-socials">
-								<li><a href="mailto:mail@example.com"><i class="fa fa-envelope fa-fw"></i></a></li>
-								<li><a href="#link"><i class="fa fa-twitter fa-fw"></i></a></li>
-								<li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
-								<li><a href="#link"><i class="fa fa-linkedin fa-fw"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
+				[% }) %]
 
 			</div>
 
@@ -359,6 +304,11 @@
 				<p class="section-description">[%= copy.getText('copy.portfolio_lede') %]</p>
 
 				<!--==== Portfolio Filters ====-->
+				<script type="text/prismic-query" data-binding="sections">
+					[
+						[:d = at(document.type, "portfolio-section")]
+					]
+				</script>
 
 				<div id="filter-works">
 
@@ -366,15 +316,11 @@
 						<li class="active">
 							<a href="#" data-filter="*">All Categories</a>
 						</li>
-						<li>
-							<a href="#" data-filter=".web-design">Web Design</a>
-						</li>
-						<li>
-							<a href="#" data-filter=".apps">Apps</a>
-						</li>
-						<li>
-							<a href="#" data-filter=".psd">PSD</a>
-						</li>
+						[% sections.forEach(function(section){ %]
+							<li>
+								<a href="#" data-filter=".[%= section.slug %]">[%= section.getText('portfolio-section.name') %]</a>
+							</li>
+						[% }); %]
 					</ul>
 
 				</div><!--End portfolio filters -->
@@ -382,6 +328,12 @@
 				<div class="projects-container scrollimation">
 
 					<div class="row">
+
+						<script type="text/prismic-query" data-binding="portfolios">
+							[
+								[:d = at(document.type, "portfolio")]
+							]
+						</script>
 
 						<!-- ==============================================
 						SINGLE PROJECT ITEM
