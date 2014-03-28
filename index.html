@@ -152,7 +152,7 @@
 									<div class="slide1-img in-from-top slow delay1">
 										<img class="img-responsive" src="assets/slider/imac.png" alt="" />
 										<div class="imac-screen">
-											[%- about.getImageView('about.img0', 'main').asHtml() %]
+											<img src="[%= about.getImageView('about.img0', 'main').url %]" class="img-responsive">
 										</div>
 									</div>
 								</li>
@@ -165,7 +165,7 @@
 									<div class="slide2-img in-from-top slow delay1">
 										<img class="img-responsive" src="assets/slider/ipad-flat.png" alt="" />
 										<div class="ipad-screen">
-											[%- about.getImageView('about.img0', 'main').asHtml() %]
+											<img src="[%= about.getImageView('about.img0', 'main').url %]" class="img-responsive">
 										</div>
 									</div>
 								</li>
@@ -267,7 +267,7 @@
 
 						<div class="col-sm-3 [%- (i%2==1) ? 'col-sm-push-8' : 'col-sm-offset-1' %] member-thumb scrollimation fade-right">
 
-							[%- staff.getImageView('staff.image', 'main').asHtml() %]
+							<img src="[%= staff.getImageView('staff.image', 'main').url %]" class="img-responsive img-center">
 							<h4>[%= staff.getText('staff.name') %]</h4>
 							<p class="title">[%= staff.getText('staff.title') %]</p>
 
@@ -335,155 +335,16 @@
 							]
 						</script>
 
-						<!-- ==============================================
-						SINGLE PROJECT ITEM
-						=============================================== -->
-
-						<article class="col-md-4 col-sm-6 project-item web-design apps psd">
-
-							<!--==== Project Thumbnail & Title ====-->
-
-							<div class="project-thumb">
-								<a href="#" class="main-link">
-									<img class="img-responsive img-center" src="assets/projects/placeholder-400x300.jpg" alt=""/>
-									<h2 class="project-title">Project Title</h2>
-									<span class="overlay-mask"></span>
-								</a>
-								<a class="enlarge" href="assets/projects/placeholder-full-size.jpg" title="Title"><i class="fa fa-expand fa-fw"></i></a>
-								<a class="link" href="#"><i class="fa fa-eye fa-fw"></i></a>
-							</div><!-- End Thumbnail -->
-
-							<!--==== Project Preview Content ====-->
-
-							<div class="preview-content" data-images="assets/projects/placeholder-645x430.jpg,assets/projects/placeholder-645x430.jpg">
-
-								<p class="preview-subtitle">A project about bills</p>
-
-								<p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipiscing elit. Donec ac odio sed enim bibendum luctus. Morbi consectetur augue nec erat congue accumsan. Pellentesque ac tempor ipsum. Fusce in nisl adipiscing, luctus ipsum in, dictum mi. </p>
-
-								<a href="#link" target="_blank" title="Visit Website"><img class="img-responsive img-center" src="assets/projects/placeholder-600x200.jpg" alt=""/></a>
-
-								<p>Morbi et gravida tellus, quis malesuada odio. Quisque facilisis cursus mi condimentum lobortis. Maecenas eros erat, varius et felis at, pretium aliquam ante. </p>
-								<p>Pellentesque dictum vulputate ornare. In hac habitasse platea dictumst. Proin pellentesque viverra tortor sit amet feugiat. Etiam varius neque quam, a tincidunt odio congue quis. Sed nec est leo. Curabitur nec eleifend magna. Nunc blandit laoreet ornare.</p>
-
-								<p class="text-center"><a class="btn btn-qubico" href="#externallink" target="_blank">Visit Website</a></p>
-
-							</div><!-- End Project Preview -->
-
-						</article>
-						<!-- ==============================================
-						END PROJECT ITEM
-						=============================================== -->
-
-						<article class="col-md-4 col-sm-6 project-item apps">
-
-							<div class="project-thumb">
-								<a href="#" class="main-link">
-									<img class="img-responsive img-center" src="assets/projects/placeholder-400x300.jpg" alt=""/>
-									<h2 class="project-title">Project Title</h2>
-									<span class="overlay-mask"></span>
-								</a>
-								<a class="link centered" href=""><i class="fa fa-eye fa-fw"></i></a>
-							</div>
-
-							<div class="preview-content" data-images="assets/projects/placeholder-645x430.jpg,assets/projects/placeholder-645x430.jpg,assets/projects/placeholder-645x430.jpg">
-
-
-								<p>Second Title ipsum dolor sit amet, <a href="">consectetur</a> adipiscing elit. Donec ac odio sed enim bibendum luctus. Morbi consectetur augue nec erat congue accumsan. Pellentesque ac tempor ipsum. Fusce in nisl adipiscing, luctus ipsum in, dictum mi. </p>
-
-								<p>Morbi et gravida tellus, quis malesuada odio. Quisque facilisis cursus mi condimentum lobortis. Maecenas eros erat, varius et felis at, pretium aliquam ante. </p>
-								<p>Pellentesque dictum vulputate ornare. In hac habitasse platea dictumst. Proin pellentesque viverra tortor sit amet feugiat. Etiam varius neque quam, a tincidunt odio congue quis. Sed nec est leo. Curabitur nec eleifend magna. Nunc blandit laoreet ornare.</p>
-
-								<p class="text-center"><a class="btn btn-qubico" href="#externallink" target="_blank">Visit Website</a></p>
-
-							</div>
-						</article>
-
-						<article class="col-md-4 col-sm-6 project-item web-design psd">
-
-							<div class="project-thumb">
-								<a href="#" class="main-link">
-									<img class="img-responsive img-center" src="assets/projects/placeholder-400x300.jpg" alt=""/>
-									<h2 class="project-title">Project Title</h2>
-									<span class="overlay-mask"></span>
-								</a>
-								<a class="enlarge centered" href="assets/projects/placeholder-full-size.jpg" title="Title"><i class="fa fa-expand fa-fw"></i></a>
-							</div><!-- End Thumbnail -->
-
-						</article>
-
-						<article class="col-md-4 col-sm-6 project-item apps">
-							<div class="project-thumb">
-								<a href="#" class="main-link">
-									<img class="img-responsive img-center" src="assets/projects/placeholder-400x300.jpg" alt=""/>
-									<h2 class="project-title">Project Title</h2>
-									<span class="overlay-mask"></span>
-								</a>
-								<a class="enlarge" href="assets/projects/placeholder-full-size.jpg" title="Title"><i class="fa fa-expand fa-fw"></i></a>
-								<a class="link" href="#"><i class="fa fa-eye fa-fw"></i></a>
-							</div>
-							<div class="preview-content">
-
-								<p class="preview-subtitle">This is another cool project</p>
-
-								<p>Second Title ipsum dolor sit amet, <a href="">consectetur</a> adipiscing elit. Donec ac odio sed enim bibendum luctus. Morbi consectetur augue nec erat congue accumsan. Pellentesque ac tempor ipsum. Fusce in nisl adipiscing, luctus ipsum in, dictum mi. </p>
-
-								<p>Morbi et gravida tellus, quis malesuada odio. Quisque facilisis cursus mi condimentum lobortis. Maecenas eros erat, varius et felis at, pretium aliquam ante. </p>
-								<p>Pellentesque dictum vulputate ornare. In hac habitasse platea dictumst. Proin pellentesque viverra tortor sit amet feugiat. Etiam varius neque quam, a tincidunt odio congue quis. Sed nec est leo. Curabitur nec eleifend magna. Nunc blandit laoreet ornare.</p>
-
-								<p class="text-center"><a class="btn btn-qubico" href="#externallink" target="_blank">Visit Website</a></p>
-
-							</div>
-						</article>
-
-						<article class="col-md-4 col-sm-6 project-item web-design psd">
-
-							<div class="project-thumb">
-								<a href="#" class="main-link">
-									<img class="img-responsive img-center" src="assets/projects/placeholder-400x300.jpg" alt=""/>
-									<h2 class="project-title">Project Title</h2>
-									<span class="overlay-mask"></span>
-								</a>
-								<a class="enlarge" href="assets/projects/placeholder-full-size.jpg" title="Title"><i class="fa fa-expand fa-fw"></i></a>
-								<a class="link" href="#"><i class="fa fa-eye fa-fw"></i></a>
-							</div>
-
-							<div class="preview-content" data-images="assets/projects/placeholder-645x430.jpg,assets/projects/placeholder-645x430.jpg,assets/projects/placeholder-645x430.jpg">
-
-
-								<p>Second Title ipsum dolor sit amet, <a href="">consectetur</a> adipiscing elit. Donec ac odio sed enim bibendum luctus. Morbi consectetur augue nec erat congue accumsan. Pellentesque ac tempor ipsum. Fusce in nisl adipiscing, luctus ipsum in, dictum mi. </p>
-
-								<p>Morbi et gravida tellus, quis malesuada odio. Quisque facilisis cursus mi condimentum lobortis. Maecenas eros erat, varius et felis at, pretium aliquam ante. </p>
-								<p>Pellentesque dictum vulputate ornare. In hac habitasse platea dictumst. Proin pellentesque viverra tortor sit amet feugiat. Etiam varius neque quam, a tincidunt odio congue quis. Sed nec est leo. Curabitur nec eleifend magna. Nunc blandit laoreet ornare.</p>
-
-								<p class="text-center"><a class="btn btn-qubico" href="#externallink" target="_blank">Visit Website</a></p>
-
-							</div>
-						</article>
-
-						<article class="col-md-4 col-sm-6 project-item web-design apps">
-							<div class="project-thumb">
-								<a href="#" class="main-link">
-									<img class="img-responsive img-center" src="assets/projects/placeholder-400x300.jpg" alt=""/>
-									<h2 class="project-title">Project Title</h2>
-									<span class="overlay-mask"></span>
-								</a>
-								<a class="enlarge" href="assets/projects/placeholder-full-size.jpg" title="Title"><i class="fa fa-expand fa-fw"></i></a>
-								<a class="link" href="#"><i class="fa fa-eye fa-fw"></i></a>
-							</div>
-							<div class="preview-content" data-images="assets/projects/placeholder-645x430.jpg,assets/projects/placeholder-645x430.jpg">
-
-								<p class="preview-subtitle">Listen to the music of Sonor!</p>
-
-								<p>Second Title ipsum dolor sit amet, <a href="">consectetur</a> adipiscing elit. Donec ac odio sed enim bibendum luctus. Morbi consectetur augue nec erat congue accumsan. Pellentesque ac tempor ipsum. Fusce in nisl adipiscing, luctus ipsum in, dictum mi. </p>
-
-								<p>Morbi et gravida tellus, quis malesuada odio. Quisque facilisis cursus mi condimentum lobortis. Maecenas eros erat, varius et felis at, pretium aliquam ante. </p>
-								<p>Pellentesque dictum vulputate ornare. In hac habitasse platea dictumst. Proin pellentesque viverra tortor sit amet feugiat. Etiam varius neque quam, a tincidunt odio congue quis. Sed nec est leo. Curabitur nec eleifend magna. Nunc blandit laoreet ornare.</p>
-
-								<p class="text-center"><a class="btn btn-qubico" href="#externallink" target="_blank">Visit Website</a></p>
-
-							</div>
-						</article>
+						[% portfolios.forEach(function(portfolio){ %]
+							<article class="col-md-4 col-sm-6 project-item [%= portfolio.get('portfolio.section').document.slug %]">
+								<div class="project-thumb">
+									<a href="#" class="main-link">
+										<img src="[%= portfolio.getImageView('portfolio.image', 'main').url %]" class="img-responsive">
+										<h2 class="project-title">[%= portfolio.getText('portfolio.title') %]</h2>
+									</a>
+								</div>
+							</article>
+						[% }) %]
 
 					</div><!-- End Row -->
 
