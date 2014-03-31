@@ -92,7 +92,12 @@
                   update(e.target.value)
                 });
 
-                if(notifyRendered) notifyRendered();
+                var imageSrc = document.querySelectorAll('img[data-src]');
+                for(var i=0; i<imageSrc.length; i++) {
+                  imageSrc[i].setAttribute('src', imageSrc[i].attributes['data-src'].value);
+                }
+
+                if(notifyRendered) setTimeout(notifyRendered, 0);
 
                 if(cb) cb();
               }
