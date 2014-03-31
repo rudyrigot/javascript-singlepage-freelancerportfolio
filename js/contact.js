@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('prismic:rendered', function() {
 	$('#contact-form').submit(function() {
 		
 		var buttonCopy = $('#contact-form button').html(),

@@ -83,7 +83,7 @@
 
 					<!-- ======= LOGO ========-->
 					<a class="navbar-brand scrollto" href="#home">
-						<span class="logo-small"><img src="assets/logo-small.png" alt=""/></span>
+						<span class="logo-small"><img data-src="assets/logo-small.png" alt=""/></span>
 						<span class="to-top"><i class="fa fa-arrow-up"></i></span>
 
 						[%= copy.getText('copy.company_name') %]
@@ -152,7 +152,7 @@
 									<div class="slide1-img in-from-top slow delay1">
 										<img class="img-responsive" src="assets/slider/imac.png" alt="" />
 										<div class="imac-screen">
-											<img src="[%= about.getImageView('about.img0', 'main').url %]" class="img-responsive">
+											<img data-src="[%= about.getImageView('about.img0', 'main').url %]" class="img-responsive">
 										</div>
 									</div>
 								</li>
@@ -165,7 +165,7 @@
 									<div class="slide2-img in-from-top slow delay1">
 										<img class="img-responsive" src="assets/slider/ipad-flat.png" alt="" />
 										<div class="ipad-screen">
-											<img src="[%= about.getImageView('about.img0', 'main').url %]" class="img-responsive">
+											<img data-src="[%= about.getImageView('about.img0', 'main').url %]" class="img-responsive">
 										</div>
 									</div>
 								</li>
@@ -267,7 +267,7 @@
 
 						<div class="col-sm-3 [%- (i%2==1) ? 'col-sm-push-8' : 'col-sm-offset-1' %] member-thumb scrollimation fade-right">
 
-							<img src="[%= staff.getImageView('staff.image', 'main').url %]" class="img-responsive img-center">
+							<img data-src="[%= staff.getImageView('staff.image', 'main').url %]" class="img-responsive img-center">
 							<h4>[%= staff.getText('staff.name') %]</h4>
 							<p class="title">[%= staff.getText('staff.title') %]</p>
 
@@ -339,7 +339,7 @@
 							<article class="col-md-4 col-sm-6 project-item [%= portfolio.get('portfolio.section').document.slug %]">
 								<div class="project-thumb">
 									<a href="#" class="main-link">
-										<img src="[%= portfolio.getImageView('portfolio.image', 'main').url %]" class="img-responsive">
+										<img data-src="[%= portfolio.getImageView('portfolio.image', 'main').url %]" class="img-responsive">
 										<h2 class="project-title">[%= portfolio.getText('portfolio.title') %]</h2>
 									</a>
 								</div>
@@ -412,7 +412,7 @@
 						<div class="col-sm-6 col-md-3">
 
 							<div class="client scrollimation fade-up">
-								<a href="[%= client.get('client.link').url() %]" target="_blank"><img class="img-responsive img-center" src="[%= client.getImageView('client.logo', 'main').url %]" alt=""/></a>
+								<a href="[%= client.get('client.link').url() %]" target="_blank"><img class="img-responsive img-center" data-src="[%= client.getImageView('client.logo', 'main').url %]" alt=""/></a>
 							</div>
 
 						</div>
